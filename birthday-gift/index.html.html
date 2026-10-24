@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Happy Birthday! 🎂✨</title>
+  <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="bg-ambient"></div>
+
+  <!-- Passcode Screen (8 Digits) -->
+  <div id="quiz-screen">
+    <div class="quiz-card" id="quiz-card">
+      <div class="quiz-visual-side">
+        <div class="shinchan-box">
+          <img id="shinchan-img" src="assets/shinchan-birthday.png" alt="Birthday Character" />
+        </div>
+      </div>
+      <div class="quiz-input-side">
+        <div class="passcode-container">
+          <div class="passcode-header">
+            <h3>Enter Passcode</h3>
+            <p id="quiz-text">Enter the 8-digit secret passcode 💖</p>
+          </div>
+          <div class="passcode-boxes-wrap">
+            <div class="passcode-box" id="b0"></div>
+            <div class="passcode-box" id="b1"></div>
+            <div class="passcode-box" id="b2"></div>
+            <div class="passcode-box" id="b3"></div>
+            <div class="passcode-box" id="b4"></div>
+            <div class="passcode-box" id="b5"></div>
+            <div class="passcode-box" id="b6"></div>
+            <div class="passcode-box" id="b7"></div>
+          </div>
+          <div class="keypad" id="keypad">
+            <button class="key-btn" onclick="pressKey('1')">1</button>
+            <button class="key-btn" onclick="pressKey('2')">2</button>
+            <button class="key-btn" onclick="pressKey('3')">3</button>
+            <button class="key-btn" onclick="pressKey('4')">4</button>
+            <button class="key-btn" onclick="pressKey('5')">5</button>
+            <button class="key-btn" onclick="pressKey('6')">6</button>
+            <button class="key-btn" onclick="pressKey('7')">7</button>
+            <button class="key-btn" onclick="pressKey('8')">8</button>
+            <button class="key-btn" onclick="pressKey('9')">9</button>
+            <button class="key-btn key-action" onclick="deleteDigit()">⌫</button>
+            <button class="key-btn" onclick="pressKey('0')">0</button>
+            <button class="key-btn key-submit" onclick="submitBirthdayDate()">💖</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Surprise Screen -->
+  <div id="surprise-screen" class="hidden-screen">
+    <div class="gingham-stage">
+      <div class="surprise-paper-card">
+        <h2 class="arched-title">I have made something special for you!</h2>
+        <div class="dance-gif-wrap">
+          <img id="dance-gif" src="assets/shinchan-dance.gif" alt="Dancing Animation" />
+        </div>
+        <h2 class="prompt-text">Do you wanna see it?</h2>
+        <div class="surprise-btn-group">
+          <button class="pill-btn yes-btn" onclick="handleChoice('yes')">YES</button>
+          <button class="pill-btn no-btn" id="btn-no" onclick="handleChoice('no')">NO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gift Screen -->
+  <div id="gift-screen" class="hidden-screen">
+    <div class="gift-stage">
+      <div class="mystery-boxes-row">
+        <div class="mystery-box-item" onclick="openMysteryBox(1)">🎁 <span>Memories</span></div>
+        <div class="mystery-box-item" onclick="openMysteryBox(2)">🎂 <span>Birthday Cake</span></div>
+        <div class="mystery-box-item" onclick="openMysteryBox(3)">💌 <span>Special Letter</span></div>
+      </div>
+      <h2 class="mystery-title">Tap on a mystery box to unlock! ✨</h2>
+    </div>
+
+    <!-- Modal 1: Memories (5 PNG Photos) -->
+    <div id="memories-modal" class="gift-modal hidden">
+      <div class="memories-board-container">
+        <button class="memories-board-close" onclick="closeMemoriesModal()">✕</button>
+        <h2>Our Sweet Memories 💖</h2>
+        <div class="clothesline-stage">
+          <div class="clothesline-photos-track" id="clothesline-photos-track">
+            <div class="hanging-polaroid-item"><img src="assets/memory1.png" /><p>Memory 1 💙</p></div>
+            <div class="hanging-polaroid-item"><img src="assets/memory2.png" /><p>Memory 2 🌸</p></div>
+            <div class="hanging-polaroid-item"><img src="assets/memory3.png" /><p>Memory 3 ✨</p></div>
+            <div class="hanging-polaroid-item"><img src="assets/memory4.png" /><p>Memory 4 💖</p></div>
+            <div class="hanging-polaroid-item"><img src="assets/memory5.png" /><p>Memory 5 🌟</p></div>
+          </div>
+          <button class="track-arrow-btn" onclick="scrollClothesline(-1)">❮</button>
+          <button class="track-arrow-btn" onclick="scrollClothesline(1)">❯</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 2: Cake -->
+    <div id="cake-modal" class="gift-modal hidden">
+      <div class="cake-card-container">
+        <button class="cake-card-close" onclick="closeCakeModal()">✕</button>
+        <h2>Make A Wish! 🕯️🎂</h2>
+        <div class="cake-interactive-stage">
+          <div class="candles-row">
+            <div class="candle" onclick="blowCandle(1, event)" id="candle-1">🕯️</div>
+            <div class="candle" onclick="blowCandle(2, event)" id="candle-2">🕯️</div>
+            <div class="candle" onclick="blowCandle(3, event)" id="candle-3">🕯️</div>
+          </div>
+          <div class="cake-visual" style="font-size: 4rem;">🎂</div>
+        </div>
+        <div id="cake-wish-banner" class="cake-wish-banner hidden">
+          <p>🎉 Happy Birthday! May all your dreams come true! 💖</p>
+          <button class="cake-btn-again" onclick="resetCake()">Relight Candles 🕯️</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Letter -->
+    <div id="letter-modal" class="gift-modal letter-screen-overlay hidden">
+      <button class="letter-back-btn" onclick="closeLetterModal()">Back</button>
+      <div class="letter-card-container">
+        <h2 class="letter-headline">Happy Birthday to my favorite person! ❤️</h2>
+        <p class="letter-para">Thank you for bringing so much happiness into my life. I hope your special day is as wonderful and amazing as you are! 🥺💖</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

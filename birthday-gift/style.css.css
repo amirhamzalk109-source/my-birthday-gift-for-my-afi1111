@@ -1,0 +1,65 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 100vw; height: 100vh; overflow: hidden; background-color: #0b0709; font-family: 'Poppins', sans-serif; position: fixed; }
+
+#bg-ambient { position: fixed; inset: 0; pointer-events: none; z-index: 1; overflow: hidden; }
+.candle-mote { position: absolute; border-radius: 50%; background: rgba(255, 215, 0, 0.6); animation: floatMote var(--md) infinite linear; }
+@keyframes floatMote { 0% { transform: translateY(100vh); opacity: 0; } 50% { opacity: 0.8; } 100% { transform: translateY(-10vh); opacity: 0; } }
+
+.confetti-piece { position: fixed; z-index: 9999; pointer-events: none; animation: confettiFall var(--cf-d) ease-out forwards; }
+@keyframes confettiFall { 0% { transform: translateY(0) rotate(0deg); opacity: 1; } 100% { transform: translateY(100vh); rotate(720deg); opacity: 0; } }
+
+#quiz-screen, #surprise-screen, #gift-screen { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; width: 100vw; height: 100vh; z-index: 10; overflow: hidden; }
+#surprise-screen, #gift-screen { display: none; }
+.hidden-screen { display: none !important; }
+
+.quiz-card { width: 100vw; height: 100vh; display: flex; background: #fff; }
+.quiz-visual-side { flex: 1; background: #fff9e6; display: flex; align-items: center; justify-content: center; }
+.shinchan-box { width: 240px; height: 240px; border-radius: 20px; overflow: hidden; border: 4px solid #ff7597; }
+.shinchan-box img { width: 100%; height: 100%; object-fit: cover; }
+
+.quiz-input-side { flex: 1; background: linear-gradient(135deg, #9983b3, #6b518c); display: flex; align-items: center; justify-content: center; padding: 10px; }
+.passcode-container { text-align: center; color: #fff; max-width: 380px; }
+.passcode-boxes-wrap { display: flex; gap: 6px; justify-content: center; margin: 10px 0 15px; flex-wrap: wrap; }
+.passcode-box { width: 32px; height: 38px; border-radius: 6px; background: rgba(255,255,255,0.2); border: 2px solid #fff; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; }
+
+.keypad { display: grid; grid-template-columns: repeat(3, 48px); gap: 8px; justify-content: center; }
+.key-btn { width: 48px; height: 48px; border-radius: 50%; background: #fff; border: none; font-size: 1rem; font-weight: 700; color: #881928; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+.key-action { background: #ffebee; color: #c0392b; }
+.key-submit { background: #e91e63; color: #fff; }
+
+.gingham-stage { width: 100vw; height: 100vh; background: #ffe6eb; display: flex; align-items: center; justify-content: center; }
+.surprise-paper-card { background: #fff; padding: 20px; border-radius: 25px; text-align: center; border: 4px solid #c2185b; max-width: 420px; width: 90%; box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+.arched-title { font-family: 'Chewy', cursive; font-size: 1.6rem; color: #c2185b; margin-bottom: 10px; }
+.dance-gif-wrap { width: 160px; height: 130px; margin: 0 auto 10px; }
+.dance-gif-wrap img { width: 100%; height: 100%; object-fit: contain; }
+.prompt-text { font-family: 'Chewy', cursive; font-size: 1.3rem; color: #881928; margin-bottom: 15px; }
+.surprise-btn-group { display: flex; gap: 15px; justify-content: center; }
+.pill-btn { background: #c2185b; border: none; border-radius: 30px; padding: 10px 30px; cursor: pointer; font-family: 'Chewy', cursive; font-size: 1.2rem; color: #fff; }
+
+.gift-stage { width: 100vw; height: 100vh; background: #fff0f3; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+.mystery-boxes-row { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
+.mystery-box-item { background: #c2185b; color: #fff; padding: 20px 25px; border-radius: 16px; cursor: pointer; font-family: 'Chewy', cursive; font-size: 1.1rem; text-align: center; box-shadow: 0 8px 20px rgba(194,24,91,0.3); }
+.mystery-title { font-family: 'Chewy', cursive; font-size: 1.5rem; color: #c2185b; text-align: center; }
+
+.gift-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.gift-modal.hidden { display: none !important; }
+.memories-board-container, .cake-card-container, .letter-card-container { background: #fff; padding: 20px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; position: relative; border: 3px solid #c2185b; }
+.memories-board-close, .cake-card-close { position: absolute; top: 10px; right: 12px; background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #c2185b; }
+.clothesline-stage { display: flex; align-items: center; gap: 8px; margin-top: 12px; overflow: hidden; }
+.clothesline-photos-track { display: flex; gap: 12px; overflow-x: auto; scrollbar-width: none; }
+.hanging-polaroid-item { min-width: 120px; background: #fdf; padding: 6px; border-radius: 8px; }
+.hanging-polaroid-item img { width: 100%; height: 90px; object-fit: cover; border-radius: 4px; }
+.hanging-polaroid-item p { font-size: 0.75rem; margin-top: 4px; color: #c2185b; font-weight: 600; }
+.track-arrow-btn { background: #c2185b; color: #fff; border: none; border-radius: 50%; width: 28px; height: 28px; cursor: pointer; }
+
+.cake-interactive-stage { font-size: 2.2rem; margin: 10px 0; cursor: pointer; }
+.candles-row { display: flex; gap: 12px; justify-content: center; font-size: 1.5rem; margin-bottom: 8px; }
+.candle { cursor: pointer; }
+.cake-wish-banner { background: #ffe6eb; padding: 10px; border-radius: 8px; margin-top: 8px; color: #c2185b; font-weight: 600; font-size: 0.9rem; }
+.cake-wish-banner.hidden { display: none !important; }
+.cake-btn-again { margin-top: 6px; background: #c2185b; color: #fff; border: none; padding: 5px 14px; border-radius: 12px; cursor: pointer; }
+
+.letter-screen-overlay { background: linear-gradient(135deg, #7b5299, #52336e); }
+.letter-headline { font-size: 1.2rem; color: #c2185b; margin-bottom: 8px; }
+.letter-para { font-size: 0.85rem; line-height: 1.4; color: #555; }
+.letter-back-btn { margin-top: 12px; background: #c2185b; color: #fff; border: none; padding: 5px 18px; border-radius: 12px; cursor: pointer; }
